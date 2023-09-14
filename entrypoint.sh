@@ -10,7 +10,7 @@ echo "🚀 Starting deployment action"
 
 # Creating the repository URL in this way will allow us to `git push` without providing a password
 # All thanks to the GITHUB_TOKEN that will grant us access to the repository
-REMOTE_REPO="https://Bearer:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
 # We need to clone the repo here.
 # Remember, our Docker container is practically pristine at this point
