@@ -10,7 +10,7 @@ echo "🚀 Starting deployment action"
 
 # Creating the repository URL in this way will allow us to `git push` without providing a password
 # All thanks to the GITHUB_TOKEN that will grant us access to the repository
-REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+REMOTE_REPO="https://Bearer:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
 # We need to clone the repo here.
 # Remember, our Docker container is practically pristine at this point
@@ -44,7 +44,7 @@ git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git add .
 # That will create a nice commit message with something like:
 # Github Actions - Fri Sep 6 12:32:22 UTC 2019
-git commit -m "Github Actions - $(date)"
+git commit -m "Github Actions - $(date)" -q
 echo "Build branch ready to go. Pushing to Github..."
 # Force push this update to our gh-pages
 git push --force $REMOTE_REPO master:gh-pages
